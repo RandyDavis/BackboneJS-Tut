@@ -1,23 +1,23 @@
-var Song = Backbone.Model.extend({});
+// var Song = Backbone.Model.extend({});
 
-var Songs = Backbone.Collection.extend({
-  model: Song,
-  url: "/api/songs"
-});
+// var Songs = Backbone.Collection.extend({
+//   model: Song,
+//   url: "/api/songs"
+// });
 
-var songs = new Songs();
-songs.fetch();
+// var songs = new Songs();
+// songs.fetch();
 
-// GET /api/songs
+// // GET /api/songs
 
 
-var songs = new Songs();
-songs.fetch({
-  data: {
-    page: 2
-  },
-  success: function(){},
-  error: function(){}
-});
+// var songs = new Songs();
+// songs.fetch({
+//   data: {
+//     page: 2
+//   },
+//   success: function(){},
+//   error: function(){}
+// });
 
-// GET /api/songs?page=2
+// // GET /api/songs?page=2

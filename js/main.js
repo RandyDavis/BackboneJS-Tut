@@ -1,42 +1,23 @@
-var Song = Backbone.Model.extend();
+var Song = Backbone.Model.extend({});
 
 var Songs = Backbone.Collection.extend({
-  model: Song
+  model: Song,
+  url: "/api/songs"
 });
 
-var songs = new Songs([
-  new Song({title: "Song 1"}),
-  new Song({title: "Song 2"}),
-  new Song({title: "Song 3"})
-]);
+var songs = new Songs();
+songs.fetch();
 
-songs.add(new Song({ title: "Song 4" }));
+// GET /api/songs
 
-var firstSong = songs.at(0);
-var songWithIdC1 = songs.get("c1");
-songs.remove(firstSong);
 
-songs.add(new Song({ title: "Song 1", genre: "Jazz", downloads: 110 }, { at: 0 }));
-songs.push(new Song({ title: "Song 2", genre: "Jazz", downloads: 90 }));
-
-var jazzSongs = songs.where({ genre: "Jazz" });
-
-var firstJazzSong = songs.findWhere({ genre: "Jazz" });
-var lastSong = songs.pop();
-
-console.log("Jazz Songs", jazzSongs);
-console.log("First Jazz Song", firstJazzSong);
-console.log("Last Song", lastSong);
-
-var filteredSongs = songs.where({ genre: "Jazz", title: "Song 2" });
-console.log("Filtered Songs", filteredSongs);
-
-var topDownloads = songs.filter(function(song) {
-  return song.get("downloads") > 100;
+var songs = new Songs();
+songs.fetch({
+  data: {
+    page: 2
+  },
+  success: function(){},
+  error: function(){}
 });
 
-console.log("Top Downloads", topDownloads);
-
-songs.each(function(song) {
-  console.log(song);
-});
+// GET /api/songs?page=2

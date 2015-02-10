@@ -1,23 +1,23 @@
-// var Song = Backbone.Model.extend({});
+var SongView = Backbone.View.extend({
 
-// var Songs = Backbone.Collection.extend({
-//   model: Song,
-//   url: "/api/songs"
-// });
+  tagName: "span",
 
-// var songs = new Songs();
-// songs.fetch();
+  className: "song",
 
-// // GET /api/songs
+  id: "1234",
 
+  attributes: {
+    "data-genre": "Jazz"
+  },
 
-// var songs = new Songs();
-// songs.fetch({
-//   data: {
-//     page: 2
-//   },
-//   success: function(){},
-//   error: function(){}
-// });
+  render: function() {
+    this.$el.html("Hello World");
 
-// // GET /api/songs?page=2
+    return this;
+  }
+});
+
+var songView = new SongView();
+songView.render();
+
+$("#container").html(songView.render().$el);

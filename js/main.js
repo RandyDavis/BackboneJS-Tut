@@ -11,7 +11,7 @@ var SongView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html("Hello World");
+    this.$el.html("Hello World!  I came from the  render() function.");
 
     return this;
   }

@@ -10,7 +10,8 @@ var SongView = Backbone.View.extend({
     console.log("Listen Clicked!");
   },
 
-  onClickBookmark: function() {
+  onClickBookmark: function(e) {
+    e.stopPropagation();
     console.log("Bookmark Clicked");
   },
 

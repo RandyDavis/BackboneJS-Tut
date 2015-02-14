@@ -1,25 +1,42 @@
-var Song = Backbone.Model.extend({
-  defaults: {
-    listeners: 0
-  }
+var Song = Backbone.Model.extend();
+
+var Songs = Backbone.Collection.extend({
+  model: Song
 });
 
 var SongView = Backbone.View.extend({
-  initialize: function() {
-    this.model.on("change", /*this.render*/ this.onModelChange, this);
-  },
-
-  onModelChange: function() {
-    this.$el.addClass("someClass");
-  },
-
-  render: function(){
-    this.$el.html(this.model.get("title") + " - Listeners: " + this.model.get("listeners"));
+  tagName: "li",
+  render: function() {
+    this.$el.html(this.model.get("title"));
     return this;
   }
 });
 
-var song = new Song({ title: "Blue in Green" });
+var SongsView = Backbone.View.extend({
+  tagName: "ul",
+  initialize: function() {
+    this.model.on("add", this.onSongAdded, this);
+  },
+  onSongAdded: function(song){
+    // console.log("Song Added");
+    var songView = new SongView({ model: song });
+    this.$el.append(songView.render().$el);
+  },
+  render: function() {
+    var self = this;
+    this.model.each(function(song) {
+      var songView = new SongView({ model: song });
+      self.$el.append(songView.render().$el);
+    });
+  }
+});
 
-var songView = new SongView({ el: "#container", model: song });
-songView.render();
+var songs = new Songs([
+  new Song({ title: "Blue in Green" }),
+  new Song({ title: "So What" }),
+  new Song({ title: "All Blues" })
+]);
+
+
+var songsView = new SongsView({ el: "#songs", model: songs });
+songsView.render();

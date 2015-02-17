@@ -9,22 +9,33 @@ var Vehicles = Backbone.Collection.extend({
 });
 
 var VehicleView = Backbone.View.extend({
+  initialize: function() {
+    this.model.on("remove", this.onVehicleRemoved, this);
+  },
+  onVehicleRemoved: function() {
+    console.log("Vehicle Removed");
+  },
   tagName: 'li',
   className: 'vehicle',
   attributes: {
     "data-color": "red"
   },
+  events: {
+
+  },
   render: function() {
-    this.$el.html();
+    var html = $("#vehicleTemplate").html();
+    var template = _.template(html);
+    this.$el.html(template(this.model.toJSON()));
     return this;
   }
 
 });
 
 var vehicles = new Vehicles([
-  new Vehicle({ registrationNumber: "XLT123" }),
-  new Vehicle({ registrationNumber: "ZIA845" }),
-  new Vehicle({ registrationNumber: "PQB67R" })
+  new Vehicle({ id: 1, registrationNumber: "XLT123" }),
+  new Vehicle({ id: 2, registrationNumber: "ZIA845" }),
+  new Vehicle({ id: 3, registrationNumber: "PQB67R" })
 ]);
 
 var vehiclesView = new VehicleView();

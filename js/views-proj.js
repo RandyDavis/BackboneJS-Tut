@@ -9,9 +9,9 @@ var Vehicles = Backbone.Collection.extend({
 });
 
 var VehicleView = Backbone.View.extend({
-  initialize: function() {
-    this.model.on("remove", this.onVehicleRemoved, this);
-  },
+  // initialize: function() {
+  //   this.model.on("remove", this.onVehicleRemoved, this);
+  // },
   onVehicleRemoved: function() {
     console.log("Vehicle Removed");
   },
@@ -21,7 +21,7 @@ var VehicleView = Backbone.View.extend({
     "data-color": "red"
   },
   events: {
-
+    "click #removeVehicle": "onVehicleRemoved"
   },
   render: function() {
     var html = $("#vehicleTemplate").html();

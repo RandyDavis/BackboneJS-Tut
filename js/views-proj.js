@@ -12,10 +12,21 @@ var VehicleView = Backbone.View.extend({
   // initialize: function() {
   //   this.model.on("remove", this.onVehicleRemoved, this);
   // },
+  tagName: 'li',
+  render: function() {
+    this.$el.html(this.model.get("registrationNumber"));
+    this.$el.attr("id", this.model.id);
+  }
+});
+
+var VehiclesView = Backbone.View.extend({
+  tagName: "ul",
+  initialize: function() {
+    this.model.on("remove", this.onVehicleRemoved, this);
+  },
   onVehicleRemoved: function() {
     console.log("Vehicle Removed");
   },
-  tagName: 'li',
   className: 'vehicle',
   attributes: {
     "data-color": "red"
@@ -38,5 +49,5 @@ var vehicles = new Vehicles([
   new Vehicle({ id: 3, registrationNumber: "PQB67R" })
 ]);
 
-var vehiclesView = new VehicleView();
+var vehiclesView = new VehicleView({ el: "#vehicles", model: vehicles});
 vehiclesView.render();

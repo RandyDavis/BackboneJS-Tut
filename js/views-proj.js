@@ -49,5 +49,7 @@ var vehicles = new Vehicles([
   new Vehicle({ id: 3, registrationNumber: "PQB67R" })
 ]);
 
+// Remove this comment
+
 var vehiclesView = new VehicleView({ el: "#vehicles", model: vehicles});
 vehiclesView.render();

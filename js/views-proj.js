@@ -50,6 +50,8 @@ var vehicles = new Vehicles([
 ]);
 
 // Remove this comment
+//  Another comment
+
 
 var vehiclesView = new VehicleView({ el: "#vehicles", model: vehicles});
 vehiclesView.render();

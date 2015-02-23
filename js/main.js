@@ -1,20 +1,22 @@
-var Song = Backbone.Model.extend();
+// Lecture 23 - Creating Views 
 
 var SongView = Backbone.View.extend({
+  tagName: "span",
+  className: "song",
+  id: "1234",
+  attributes: {
+    "data-genre": "Jazz"
+  },
   render: function() {
-    /* How we have been getting data into our render function */
-    // this.$el.html(this.model.get("title"));
+    this.$el.html("Hello World!");
 
-    /* How we will get data when using a template*/
-    var template = _.template($("#songTemplate").html());
-    var html = template(this.model.toJSON());
-    this.$el.html(html);
     return this;
   }
 });
 
-var song = new Song({ title: "Blue in Green", plays: 1100 });
+var songView = new SongView();
+// songView.render();
 
-var songView = new SongView({ el: "#container", model: song });
+$("#container").html(songView.render().$el);
 
-songView.render();
+

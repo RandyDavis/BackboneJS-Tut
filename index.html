@@ -43,6 +43,16 @@
             <% } %>
         </script> -->
 
+        <!-- Create Template for redo of Views: Templating Lesson -->
+        <script id="songTemplate" type="text/html">
+            <%= title %>
+            <a href="#" class="button round">Listen</a>
+            <% if (plays > 1000) { %>
+                <span class="popular">Popular</span>
+            <% } %>
+
+        </script>
+
         <script src="js/main.js"></script>
         <!-- Live Reload Script -->
         <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>

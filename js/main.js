@@ -191,7 +191,7 @@ var songs = new Songs([
 var songsView = new SongsView({ el: "#songs", model: songs });
 songsView.render();
 
-
+// In the console enter to see changes: songs.remove(songs.at(0));
 
 
 

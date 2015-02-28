@@ -30,7 +30,7 @@ var VehicleView = Backbone.View.extend({
   },
 
   events: {
-    "click #removeVehicle": "onVehicleRemoved"
+    "click .removeVehicle": "onVehicleRemoved"
   },
 
   onVehicleRemoved: function() {
@@ -39,7 +39,7 @@ var VehicleView = Backbone.View.extend({
   },
   
   render: function() {
-    this.$el.html(this.model.get("registrationNumber") + '<a href="#" class="button round">Remove Vehicle</a>');
+    this.$el.html(this.model.get("registrationNumber") + '<a href="#" class="button round removeVehicle">Remove Vehicle</a>');
     this.$el.attr("id", this.model.id);
     return this;
   }
@@ -61,7 +61,7 @@ var VehiclesView = Backbone.View.extend({
 
   onVehicleRemoved: function() {
     console.log("Vehicle Removed");
-    // this.model.remove();
+    this.$("li#" + vehicle.id).remove();
   },
   // events: {
   //   "click #removeVehicle": "onVehicleRemoved"
@@ -73,11 +73,11 @@ var VehiclesView = Backbone.View.extend({
       var vehicleView = new VehicleView({ model: vehicle });
       self.$el.append(vehicleView.render().$el);
     });
-    var template = _.template($("#vehiclesTemplate").html());
-    var html = template(this.model.toJSON());
-    this.$el.html(html);
+    // var template = _.template($("#vehiclesTemplate").html());
+    // var html = template(this.model.toJSON());
+    // this.$el.html(html);
     // this.$el.html(template(this.model.toJSON()));
-    return this;
+    // return this;
   }
 
 });
@@ -95,7 +95,7 @@ var vehicles = new Vehicles([
 
 
 
-var vehiclesView = new VehiclesView({ el: "#vehiclesTemplate", model: vehicles});
+var vehiclesView = new VehiclesView({ el: "#vehicles", model: vehicles});
 vehiclesView.render();
 
 

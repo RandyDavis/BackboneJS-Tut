@@ -75,6 +75,7 @@ var VehiclesView = Backbone.View.extend({
     });
     var template = _.template($("#vehiclesTemplate").html());
     var html = template(this.model.toJSON());
+    this.$el.html(html);
     // this.$el.html(template(this.model.toJSON()));
     return this;
   }

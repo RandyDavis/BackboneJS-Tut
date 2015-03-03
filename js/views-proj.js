@@ -30,13 +30,18 @@ var VehicleView = Backbone.View.extend({
   },
 
   events: {
-    "click .removeVehicle": "onVehicleRemoved"
+    "click #removeVehicle": "onVehicleRemoved"
   },
 
   onVehicleRemoved: function() {
     console.log("Vehicle Removed");
-    // this.model.remove();
+    this.$("li#" + vehicles.id).remove();
   },
+
+  // onVehicleRemoved: function() {
+  //   console.log("Vehicle Removed");
+  //   // this.model.remove();
+  // },
   
   render: function() {
     this.$el.html(this.model.get("registrationNumber") + '<a href="#" class="button round removeVehicle">Remove Vehicle</a>');

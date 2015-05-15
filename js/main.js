@@ -1,3 +1,28 @@
+// Lecture 17 - Creating Collections
+var Song = Backbone.Model.extend();
+
+var Songs = Backbone.Collection.extend({
+  model: Song
+});
+
+var songs = new Songs([
+  new Song({ title: "Song 1" }),
+  new Song({ title: "Song 2" }),
+  new Song({ title: "Song 3" })
+]);
+
+songs.add(new Song({ title: "Song 4" }));
+
+var firstSong = songs.at(0);
+var songsWithIdC1 = songs.get("c1");
+
+songs.remove(firstSong);
+
+
+
+
+
+
 // Lecture 23 - Creating Views 
 
 // var SongView = Backbone.View.extend({
@@ -200,22 +225,22 @@
 
 
 // Lecture 28: Templating
-var Song = Backbone.Model.extend();
+// var Song = Backbone.Model.extend();
 
-var SongView = Backbone.View.extend({
-  render: function() {
-    var template = _.template($("#songTemplate").html());
-    var html = template(this.model.toJSON());
-    this.$el.html(html);
-    // this.$el.html(this.model.get("title") + " <button>Listen</button>");
-    return this;
-  }
-});
+// var SongView = Backbone.View.extend({
+//   render: function() {
+//     var template = _.template($("#songTemplate").html());
+//     var html = template(this.model.toJSON());
+//     this.$el.html(html);
+//     // this.$el.html(this.model.get("title") + " <button>Listen</button>");
+//     return this;
+//   }
+// });
 
-var song = new Song({ title: "Blue in Green", plays: 10000 });
+// var song = new Song({ title: "Blue in Green", plays: 10000 });
 
-var songView = new SongView({ el: "#container", model: song });
-songView.render();
+// var songView = new SongView({ el: "#container", model: song });
+// songView.render();
 
 
 

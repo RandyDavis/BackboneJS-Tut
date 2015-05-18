@@ -62,7 +62,16 @@ var Songs = Backbone.Collection.extend({
 
 var songs = new Songs();
 songs.fetch();
-
+ // Backbone uses jQuery to make http requests, as a result you can pass additional args to the api using the data hash
+ songs.fetch({
+   data: {
+     page: 2
+   },
+   success: function(){},
+   error: function(){}
+ });
+ 
+//  GET /api/songs?page=2
 
 
 

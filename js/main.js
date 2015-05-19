@@ -55,22 +55,22 @@
 //});
 
 // Lecture 19 - Connecting to the Server
-var Songs = Backbone.Collection.extend({
-  model: Song
-  url: "/api/songs"
-});
-
-var songs = new Songs();
-songs.fetch();
- // Backbone uses jQuery to make http requests, as a result you can pass additional args to the api using the data hash
- songs.fetch({
-   data: {
-     page: 2
-   },
-   success: function(){},
-   error: function(){}
- });
- 
+//var Songs = Backbone.Collection.extend({
+//  model: Song
+//  url: "/api/songs"
+//});
+//
+//var songs = new Songs();
+//songs.fetch();
+// // Backbone uses jQuery to make http requests, as a result you can pass additional args to the api using the data hash
+// songs.fetch({
+//   data: {
+//     page: 2
+//   },
+//   success: function(){},
+//   error: function(){}
+// });
+// 
 //  GET /api/songs?page=2
 
 
@@ -96,6 +96,25 @@ songs.fetch();
 // // songView.render();
 
 // $("#container").html(songView.render().$el);
+
+// Lecture 23 redo - Creating Views
+var SongView = Backbone.View.extend({
+  tagName: "span",
+  className: "song",
+  id: "1234",
+  attributes: {
+    "data-genre": "Jazz"
+  },
+  render: function() {
+    this.$el.html("Hello World!");
+    
+    return this;
+  }
+});
+
+var songView = new SongView();
+
+$("#container").html(songView.render().$el);
 
 
 

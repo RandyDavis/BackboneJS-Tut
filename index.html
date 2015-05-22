@@ -17,15 +17,37 @@
     <body>
          <div id="container"></div>
         
-        <ul id="songs"></ul>
-        <!-- <ul id="vehicles"></ul> -->
+        <!-- <ul id="songs"></ul>-->
+        <ul id="vehicles"></ul>
         
         <script src="js/lib/jquery-min.js"></script>
         <script src="js/lib/underscore-min.js"></script>
         <script src="js/lib/backbone-min.js"></script>
         <!-- <script src="js/model-proj.js"></script> -->
         <!-- <script src="js/collection-proj.js"></script>-->
+        <script src="js/views-proj.js"></script>
         <!-- Create Template for Vehicle View -->
+        <script id="vehiclesTemplate" type="text/html">
+            <ul>
+                <li>
+                    <%= registrationNumber %>
+                    <button>Delete</button>
+                </li>
+            </ul>
+        </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <!-- Comment out Views Template
 
         <script id="vehiclesTemplate" type="text/html">
@@ -51,15 +73,15 @@
         </script> -->
 
         <!-- Create Template for redo of Views: Templating Lesson -->
-        <script id="songTemplate" type="text/html">
-            <%= title %>
-            <button>Listen</button>
-            <% if (plays > 1000) { %>
-                <span class="popular">Popular</span>
-            <% } %>
-        </script>
+        <!-- <script id="songTemplate" type="text/html">
+                <%= title %>
+                <button>Listen</button>
+                <% if (plays > 1000) { %>
+                    <span class="popular">Popular</span>
+                <% } %>
+        </script>-->
 
-        <script src="js/main.js"></script>
+        <!-- <script src="js/main.js"></script>-->
         <!-- Live Reload Script -->
         <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
     </body>

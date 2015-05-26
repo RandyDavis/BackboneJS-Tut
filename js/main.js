@@ -506,35 +506,43 @@
 
 
 // Lecture 33 - Binding and Triggering Custom Events
-var person = {
-  name: "Mosh",
-  
-  walk: function() {
-    this.trigger("walking", {  // use .trigger() method to publish events
-      speed: 1,
-      startTime: "08:00"
-    });
-  }
-};
-
-_.extend(person, Backbone.Events);
-
-//person.on("walking", function(e) {  // use .on() method to subscribe to events
+//var person = {
+//  name: "Mosh",
+//  
+//  walk: function() {
+//    this.trigger("walking", {  // use .trigger() method to publish events
+//      speed: 1,
+//      startTime: "08:00"
+//    });
+//  }
+//};
+//
+//_.extend(person, Backbone.Events);
+//
+////person.on("walking", function(e) {  // use .on() method to subscribe to events
+////  console.log("Person is walking");
+////  console.log("Events Args", e);
+////});
+//
+//person.once("walking", function(e) {
 //  console.log("Person is walking");
 //  console.log("Events Args", e);
 //});
-
-person.once("walking", function(e) {
-  console.log("Person is walking");
-  console.log("Events Args", e);
-});
-
-
-//person.off("walking");  // how to unsubscribe from an event...provide the name of the event you'd like to unsubscribe from
-person.walk();
-person.walk();
+//
+//
+////person.off("walking");  // how to unsubscribe from an event...provide the name of the event you'd like to unsubscribe from
+//person.walk();
+//person.walk();
+//
 
 
+
+
+// Lecture 34 - Creating an Event Aggregator to Coordinate Multiple Views
+//    - see event-agg.html, event-agg.js, and event-add.css for demo
+
+
+ 
 
 
 

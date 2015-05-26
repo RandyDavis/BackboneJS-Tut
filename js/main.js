@@ -329,7 +329,7 @@
 //songView.render();
 
 
-// Lecture 27 - Handling Collection Events
+// Lecture 28 - Handling Collection Events
 // var Song = Backbone.Model.extend();
 
 // var Songs = Backbone.Collection.extend({
@@ -395,7 +395,7 @@
 
 
 
-//  Lecture 27 redo - Handling Collection Events
+//  Lecture 28 redo - Handling Collection Events
 //var Song = Backbone.Model.extend({
 //  var 
 //});
@@ -465,7 +465,7 @@
 
 
 
-// Lecture 28: Templating
+// Lecture 29: Templating
 // var Song = Backbone.Model.extend();
 
 // var SongView = Backbone.View.extend({
@@ -485,28 +485,54 @@
 
 
 
-// Lecture 28 redo - Templating
-var Song = Backbone.Model.extend();
+// Lecture 29 redo - Templating
+// var Song = Backbone.Model.extend();
 
-var SongView = Backbone.View.extend({
-  render: function() {
-    var template = _.template($("#songTemplate").html());
-    var html = template(this.model.toJSON());
-    this.$el.html(html);
+// var SongView = Backbone.View.extend({
+//   render: function() {
+//     var template = _.template($("#songTemplate").html());
+//     var html = template(this.model.toJSON());
+//     this.$el.html(html);
     
-    return this;
+//     return this;
+//   }
+// });
+
+// var song = new Song({ title: "Blue in Green", plays: 1100 });
+
+// var songView = new SongView({ el: "#container", model: song });
+// songView.render();
+
+
+
+// Lecture 33 - Binding and Triggering Custom Events
+var person = {
+  name: "Mosh",
+  
+  walk: function() {
+    this.trigger("walking", {  // use .trigger() method to publish events
+      speed: 1,
+      startTime: "08:00"
+    });
   }
+};
+
+_.extend(person, Backbone.Events);
+
+//person.on("walking", function(e) {  // use .on() method to subscribe to events
+//  console.log("Person is walking");
+//  console.log("Events Args", e);
+//});
+
+person.once("walking", function(e) {
+  console.log("Person is walking");
+  console.log("Events Args", e);
 });
 
-var song = new Song({ title: "Blue in Green", plays: 1100 });
 
-var songView = new SongView({ el: "#container", model: song });
-songView.render();
-
-
-
-
-
+//person.off("walking");  // how to unsubscribe from an event...provide the name of the event you'd like to unsubscribe from
+person.walk();
+person.walk();
 
 
 
